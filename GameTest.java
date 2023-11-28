@@ -1,6 +1,7 @@
 package game;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Purpose:             game<br />
@@ -16,7 +17,24 @@ import java.util.ArrayList;
 public class GameTest
 {
 
-
+    public static void main(String[] args)
+    {
+        ArrayList<Dragon> list = initDragon();
+        int[] arr = new int[list.size()];
+        for (int i = 0; i < list.size() - 1; i++)
+        {
+            for (int j = 0; j < list.size() / 2; j++)
+            {
+                Dragon dragon = battleRound(list.get(j),list.get(list.size() - 1 - j));
+                arr[list.indexOf(dragon)]++;
+            }
+            for (int k = 0; k <list.size(); k++){
+                list.get(k).resurrect();
+            }
+        }
+        System.out.println(list);
+        System.out.println(Arrays.toString(arr));
+    }
     public static ArrayList<Dragon> initDragon()
     {
         ArrayList<Dragon> list = new ArrayList<>();
