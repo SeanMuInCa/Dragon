@@ -67,31 +67,11 @@ public class GameTest
             int times2 = obDragon2.getNumAttacksPerTurn();
             if(obDragon1.getInitiative() > obDragon2.getInitiative()){
                 for(;times1>0 || times2 > 0;times1--,times2--){
-                    /*if(times1 > 0 && (!obDragon1.isDead()) && (!obDragon2.isDead())) {
-                        obDragon1.defendAttack(obDragon2);
-                        System.out.println("time1");
-                        if(obDragon2.isDead()) break;
-                    }
-                    if(times2 > 0 && (!obDragon1.isDead()) && (!obDragon2.isDead())) {
-                        obDragon2.defendAttack(obDragon1);
-                        System.out.println("time2");
-                        if(obDragon1.isDead()) break;
-                    }*/
                     if(!attack(obDragon1,obDragon2,times1,times2)) break;
                 }
                 if(obDragon1.isDead() || obDragon2.isDead()) break;
             }else if(obDragon1.getInitiative() <= obDragon2.getInitiative()){
                 for(;times1>0 || times2 > 0;times1--,times2--){
-                    /*if(times2 > 0) {
-                        obDragon2.defendAttack(obDragon1);
-                        System.out.println("time2");
-                        if(obDragon1.isDead()) break;
-                    }
-                    if(times1 > 0) {
-                        obDragon1.defendAttack(obDragon2);
-                        System.out.println("time1");
-                        if(obDragon2.isDead()) break;
-                    }*/
                     if(!attack(obDragon1,obDragon2,times1,times2)) break;
                 }
                 if(obDragon1.isDead() || obDragon2.isDead()) break;
