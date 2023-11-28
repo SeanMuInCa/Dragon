@@ -2,7 +2,6 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 
 /**
  * Purpose:             game<br />
@@ -22,9 +21,11 @@ public class GameTest
     {
         ArrayList<Dragon> list = initDragon();
         int[] arr = new int[list.size()];
-        for (int i = 0; i < list.size() - 1; i++)
+        int rounds = list.size() - 1;
+        int matchesPerRound = list.size() / 2;
+        for (int i = 0; i < rounds; i++)
         {
-            for (int j = 0; j < list.size() / 2; j++)
+            for (int j = 0; j < matchesPerRound; j++)
             {
                 Dragon dragon = battleRound(list.get(j),list.get(list.size() - 1 - j));
                 arr[list.indexOf(dragon)]++;
@@ -32,6 +33,7 @@ public class GameTest
             for (int k = 0; k <list.size(); k++){
                 list.get(k).resurrect();
             }
+            list.add(1, list.remove(list.size() - 1));
         }
         System.out.println(list);
         System.out.println(Arrays.toString(arr));
@@ -62,9 +64,11 @@ public class GameTest
 
     public static Dragon battleRound(Dragon obDragon1, Dragon obDragon2)
     {
+        int count = 0;
         while (true){
             int times1 = obDragon1.getNumAttacksPerTurn();
             int times2 = obDragon2.getNumAttacksPerTurn();
+            System.out.println(obDragon1 + " vs " + obDragon2);
             if(obDragon1.getInitiative() > obDragon2.getInitiative()){
                 for(;times1>0 || times2 > 0;times1--,times2--){
                     if(!attack(obDragon1,obDragon2,times1,times2)) break;
@@ -93,14 +97,14 @@ public class GameTest
             {
                 if(isHit(d1)){
                     d1.defendAttack(d2);
-                    System.out.println("time1");
+//                    System.out.println("time1");
                 }
                 if (d2.isDead()) return false;
             }
             if(j > 0) {
                 if(isHit(d2)){
                     d2.defendAttack(d1);
-                    System.out.println("time2");
+//                    System.out.println("time2");
                 }
                 if(d1.isDead()) return false;
             }
@@ -125,6 +129,7 @@ public class GameTest
 
 }
 
+/*
 class MyComparator implements Comparator<int>
 {
     @Override
@@ -132,4 +137,4 @@ class MyComparator implements Comparator<int>
     {
         return 0;
     }
-}
+}*/
