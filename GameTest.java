@@ -16,7 +16,6 @@ import java.util.Arrays;
  */
 public class GameTest
 {
-
     public static void main(String[] args)
     {
         ArrayList<Dragon> list = initDragon();
@@ -30,10 +29,11 @@ public class GameTest
                 Dragon dragon = battleRound(list.get(j),list.get(list.size() - 1 - j));
                 arr[list.indexOf(dragon)]++;
             }
-            for (int k = 0; k <list.size(); k++){
-                list.get(k).resurrect();
+            for (Dragon dragon : list)
+            {
+                dragon.resurrect();
             }
-            list.add(1, list.remove(list.size() - 1));
+            list.add(1, list.remove(list.size() - 1));//move the last one into 2nd
         }
         System.out.println(list);
         System.out.println(Arrays.toString(arr));
@@ -41,7 +41,7 @@ public class GameTest
     public static ArrayList<Dragon> initDragon()
     {
         ArrayList<Dragon> list = new ArrayList<>();
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 1; i++)
         {
             //generate 4 larges
             list.add(new Red(Dragon.DragonSize.Large, "Red"));
@@ -64,20 +64,19 @@ public class GameTest
 
     public static Dragon battleRound(Dragon obDragon1, Dragon obDragon2)
     {
-        int count = 0;
         while (true){
             int times1 = obDragon1.getNumAttacksPerTurn();
             int times2 = obDragon2.getNumAttacksPerTurn();
             System.out.println(obDragon1 + " vs " + obDragon2);
             if(obDragon1.getInitiative() > obDragon2.getInitiative()){
-                for(;times1>0 || times2 > 0;times1--,times2--){
-                    if(!attack(obDragon1,obDragon2,times1,times2)) break;
-                }
+//                for(;times1>0 || times2 > 0;times1--,times2--){
+                    if(attack(obDragon1, obDragon2, times1, times2)) break;
+//                }
                 if(obDragon1.isDead() || obDragon2.isDead()) break;
             }else if(obDragon1.getInitiative() <= obDragon2.getInitiative()){
-                for(;times1>0 || times2 > 0;times1--,times2--){
-                    if(!attack(obDragon1,obDragon2,times1,times2)) break;
-                }
+//                for(;times1>0 || times2 > 0;times1--,times2--){
+                    if(attack(obDragon1, obDragon2, times1, times2)) break;
+//                }
                 if(obDragon1.isDead() || obDragon2.isDead()) break;
             }else{
                 int random = Math.random() < 0.5 ? 1 : 2;
@@ -97,19 +96,17 @@ public class GameTest
             {
                 if(isHit(d1)){
                     d1.defendAttack(d2);
-//                    System.out.println("time1");
                 }
-                if (d2.isDead()) return false;
+                if (d2.isDead()) return true;
             }
             if(j > 0) {
                 if(isHit(d2)){
                     d2.defendAttack(d1);
-//                    System.out.println("time2");
                 }
-                if(d1.isDead()) return false;
+                if(d1.isDead()) return true;
             }
         }
-        return true;
+        return false;
     }
     public static boolean isHit(Dragon d){
         switch (d.nSize){
@@ -129,7 +126,7 @@ public class GameTest
 
 }
 
-/*
+/* deal with it later
 class MyComparator implements Comparator<int>
 {
     @Override
