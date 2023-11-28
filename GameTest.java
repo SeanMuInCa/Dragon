@@ -43,31 +43,39 @@ public class GameTest
 
     public static Dragon battleRound(Dragon obDragon1, Dragon obDragon2)
     {
-        while ((!obDragon1.isDead()) && (!obDragon2.isDead())){
+        while (true){
             int times1 = obDragon1.getNumAttacksPerTurn();
             int times2 = obDragon2.getNumAttacksPerTurn();
             if(obDragon1.getInitiative() > obDragon2.getInitiative()){
                 for(;times1>0 || times2 > 0;times1--,times2--){
-                    if(times1 > 0) {
+                    /*if(times1 > 0 && (!obDragon1.isDead()) && (!obDragon2.isDead())) {
                         obDragon1.defendAttack(obDragon2);
                         System.out.println("time1");
+                        if(obDragon2.isDead()) break;
                     }
-                    if(times2 > 0) {
+                    if(times2 > 0 && (!obDragon1.isDead()) && (!obDragon2.isDead())) {
                         obDragon2.defendAttack(obDragon1);
                         System.out.println("time2");
-                    }
+                        if(obDragon1.isDead()) break;
+                    }*/
+                    if(!attack(obDragon1,obDragon2,times1,times2)) break;
                 }
+                if(obDragon1.isDead() || obDragon2.isDead()) break;
             }else if(obDragon1.getInitiative() < obDragon2.getInitiative()){
                 for(;times1>0 || times2 > 0;times1--,times2--){
-                    if(times2 > 0) {
+                    /*if(times2 > 0) {
                         obDragon2.defendAttack(obDragon1);
                         System.out.println("time2");
+                        if(obDragon1.isDead()) break;
                     }
                     if(times1 > 0) {
                         obDragon1.defendAttack(obDragon2);
                         System.out.println("time1");
-                    }
+                        if(obDragon2.isDead()) break;
+                    }*/
+                    if(!attack(obDragon1,obDragon2,times1,times2)) break;
                 }
+                if(obDragon1.isDead() || obDragon2.isDead()) break;
             }else{
                 int random = Math.random() < 0.5 ? 1 : 2;
                 if (random == 1) {
@@ -79,8 +87,41 @@ public class GameTest
         }
         return obDragon1.isDead() ? obDragon2 : obDragon1;
     }
-    private void round(){
-
+    private static boolean attack(Dragon d1, Dragon d2, int i, int j){
+        for(;i>0 || j > 0;i--,j--)
+        {
+            if (i > 0)
+            {
+                if(isHit(d1)){
+                    d1.defendAttack(d2);
+                    System.out.println("time1");
+                }
+                if (d2.isDead()) return false;
+            }
+            if(j > 0) {
+                if(isHit(d2)){
+                    d2.defendAttack(d1);
+                    System.out.println("time2");
+                }
+                if(d1.isDead()) return false;
+            }
+        }
+        return true;
+    }
+    public static boolean isHit(Dragon d){
+        switch (d.nSize){
+            case Small ->
+            {
+                return Math.random() < 0.7;
+            }
+            case Medium -> {
+                return Math.random() < 0.8;
+            }
+            default ->
+            {
+                return true;
+            }
+        }
     }
 
 }

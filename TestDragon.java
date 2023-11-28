@@ -18,6 +18,6 @@ public class TestDragon
     public static void main(String[] args)
     {
         ArrayList<Dragon> list = GameTest.initDragon();
-        System.out.println(GameTest.battleRound(list.get(9), list.get(0)));
+        System.out.println(GameTest.battleRound(list.get(0), list.get(9)));
     }
 }

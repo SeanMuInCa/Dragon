@@ -27,7 +27,7 @@ public class Green extends Dragon
         {
             if(obOther instanceof Red){
                 obOther.nHitPoints -= (int)(this.getAttack() * 1.2) - obOther.getDefense();
-                System.out.println(this.name + " vs red");
+                System.out.println(this.name + " vs red"+"我的血量"+this.getHitPoints() + "对手血量"+obOther.getHitPoints());
             }else if (obOther instanceof Green){
                 obOther.nHitPoints -= this.getAttack() - obOther.getDefense();
                 System.out.println(this.name + " vs Green");

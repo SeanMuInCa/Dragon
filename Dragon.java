@@ -38,6 +38,7 @@ public abstract class Dragon
                 this.nInitiative = getRandomNumber(0, 10);
                 this.nAttackRank = getRandomNumber(61, 70);
                 this.nDefenseRank = getRandomNumber(29, 35);
+//                this.hitRate = 1;
             }
             case Medium ->
             {
@@ -45,6 +46,7 @@ public abstract class Dragon
                 this.nInitiative = getRandomNumber(20, 40);
                 this.nAttackRank = getRandomNumber(51, 60);
                 this.nDefenseRank = getRandomNumber(20, 29);
+//                this.hitRate = 0.8;
             }
             case Small ->
             {
@@ -52,6 +54,7 @@ public abstract class Dragon
                 this.nInitiative = getRandomNumber(40, 60);
                 this.nAttackRank = getRandomNumber(36, 50);
                 this.nDefenseRank = getRandomNumber(10, 19);
+//                this.hitRate = 0.7;
             }
         }
         originalHitPoints = this.nHitPoints;
