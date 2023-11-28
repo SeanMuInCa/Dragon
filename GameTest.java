@@ -2,14 +2,15 @@ package game;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * Purpose:             game<br />
  * Data Submitted:      2023/11/27 <br />
- * Assignment Number:    game<br />
+ * Assignment Number:    assignment 2<br />
  * Course Name:         COSC601  <br />
  * Instructor:          George Ding  <br />
- * File Path:          game <br />
+ * File Path:          GameTest.java <br />
  *
  * @author Zhenghua Mu
  * @version 1.0.0
@@ -79,7 +80,7 @@ public class GameTest
                     if(!attack(obDragon1,obDragon2,times1,times2)) break;
                 }
                 if(obDragon1.isDead() || obDragon2.isDead()) break;
-            }else if(obDragon1.getInitiative() < obDragon2.getInitiative()){
+            }else if(obDragon1.getInitiative() <= obDragon2.getInitiative()){
                 for(;times1>0 || times2 > 0;times1--,times2--){
                     /*if(times2 > 0) {
                         obDragon2.defendAttack(obDragon1);
@@ -142,4 +143,13 @@ public class GameTest
         }
     }
 
+}
+
+class MyComparator implements Comparator<int>
+{
+    @Override
+    public int compare(int o1, int o2)
+    {
+        return 0;
+    }
 }
