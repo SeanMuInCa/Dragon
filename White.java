@@ -3,10 +3,10 @@ package game;
 /**
  * Purpose:             game<br />
  * Data Submitted:      2023/11/27 <br />
- * Assignment Number:    game<br />
+ * Assignment Number:    assignment 2<br />
  * Course Name:         COSC601  <br />
  * Instructor:          George Ding  <br />
- * File Path:          game <br />
+ * File Path:          White.java <br />
  *
  * @author Zhenghua Mu
  * @version 1.0.0
