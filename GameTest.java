@@ -41,7 +41,7 @@ public class GameTest
     public static ArrayList<Dragon> initDragon()
     {
         ArrayList<Dragon> list = new ArrayList<>();
-        for (int i = 0; i < 1; i++)
+        for (int i = 0; i < 3; i++)
         {
             //generate 4 larges
             list.add(new Red(Dragon.DragonSize.Large, "Red"));
