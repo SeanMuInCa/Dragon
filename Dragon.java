@@ -13,10 +13,10 @@ package game;
  */
 public abstract class Dragon
 {
-    private int nAttackRank;
-    private int nDefenseRank;
-    public int nHitPoints;
-    private int nInitiative;
+    protected int nAttackRank;
+    protected int nDefenseRank;
+    protected int nHitPoints;
+    protected int nInitiative;
     public  DragonSize nSize;
     private int originalHitPoints;
 
@@ -35,7 +35,7 @@ public abstract class Dragon
             case Large ->
             {
                 this.nHitPoints = getRandomNumber(86, 100);
-                this.nInitiative = getRandomNumber(0, 10);
+                this.nInitiative = 10;
                 this.nAttackRank = getRandomNumber(61, 70);
                 this.nDefenseRank = getRandomNumber(29, 35);
 //                this.hitRate = 1;
