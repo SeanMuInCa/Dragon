@@ -18,7 +18,7 @@ public abstract class Dragon
     protected int nHitPoints;
     protected int nInitiative;
     public  DragonSize nSize;
-    private int originalHitPoints;
+//    private int originalHitPoints;
 
     public enum DragonSize
     {
@@ -35,10 +35,9 @@ public abstract class Dragon
             case Large ->
             {
                 this.nHitPoints = getRandomNumber(86, 100);
-                this.nInitiative = 10;
+                this.nInitiative = getRandomNumber(0, 10);
                 this.nAttackRank = getRandomNumber(61, 70);
                 this.nDefenseRank = getRandomNumber(29, 35);
-//                this.hitRate = 1;
             }
             case Medium ->
             {
@@ -46,7 +45,6 @@ public abstract class Dragon
                 this.nInitiative = getRandomNumber(20, 40);
                 this.nAttackRank = getRandomNumber(51, 60);
                 this.nDefenseRank = getRandomNumber(20, 29);
-//                this.hitRate = 0.8;
             }
             case Small ->
             {
@@ -54,10 +52,9 @@ public abstract class Dragon
                 this.nInitiative = getRandomNumber(40, 60);
                 this.nAttackRank = getRandomNumber(36, 50);
                 this.nDefenseRank = getRandomNumber(10, 19);
-//                this.hitRate = 0.7;
             }
         }
-        originalHitPoints = this.nHitPoints;
+//        originalHitPoints = this.nHitPoints;
     }
 
     private static int getRandomNumber(int min, int max)
@@ -104,18 +101,13 @@ public abstract class Dragon
         return this.nHitPoints <= 0;
     }
     public void resurrect(){
-        this.nHitPoints = originalHitPoints;
+        switch (this.nSize){
+            case Large -> this.nHitPoints = getRandomNumber(86, 100);
+            case Medium -> this.nHitPoints = getRandomNumber(71, 85);
+            case Small -> this.nHitPoints = getRandomNumber(51, 70);
+        }
     }
 
-    public void setHitPoints(int nHitPoints)
-    {
-        this.nHitPoints = nHitPoints;
-    }
-
-    public int getHitPoints()
-    {
-        return nHitPoints;
-    }
 
     @Override
     public String toString()
