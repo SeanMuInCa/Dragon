@@ -13,27 +13,26 @@ package game;
  */
 public class Black extends Dragon
 {
-    public static int counter = 0;
+
     public String name;
     public Black(Dragon.DragonSize nSize, String name)
     {
         super(nSize);
-        counter++;
-        this.name = nSize + name + counter;
+        this.name = nSize + name;
     }
 
     @Override
     public void defendAttack(Dragon obOther)
     {
         if(obOther instanceof Red){
-            obOther.nHitPoints -= this.getAttack() - obOther.getDefense();
+            this.nHitPoints -= obOther.getAttack() - this.getDefense();
         }else if (obOther instanceof Green){
-            obOther.nHitPoints -= this.getAttack() - obOther.getDefense();
+            this.nHitPoints -= obOther.getAttack() - this.getDefense();
         }else if (obOther instanceof White)
         {
-            obOther.nHitPoints -= (int)(this.getAttack() * 0.75) - obOther.getDefense();
+            this.nHitPoints -= (int)(obOther.getAttack() * 0.75) - this.getDefense();
         }else{
-            obOther.nHitPoints -= this.getAttack() - obOther.getDefense();
+            this.nHitPoints -= obOther.getAttack() - this.getDefense();
         }
     }
 
@@ -42,6 +41,6 @@ public class Black extends Dragon
     {
         return "Black{" +
                 "name='" + name + '\'' +
-                "} " + super.toString();
+                "} " /*+ super.toString()*/;
     }
 }

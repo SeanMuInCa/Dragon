@@ -13,30 +13,28 @@ package game;
  */
 public class Green extends Dragon
 {
-        public static int counter = 0;
         public String name;
         public Green(DragonSize nSize, String name)
         {
             super(nSize);
-            counter++;
-            this.name = nSize + name + counter;
+            this.name = nSize + name;
         }
 
         @Override
         public void defendAttack(Dragon obOther)
         {
             if(obOther instanceof Red){
-                obOther.nHitPoints -= (int)(this.getAttack() * 1.2) - obOther.getDefense();
+                this.nHitPoints -= (int)(obOther.getAttack() * 1.2) - this.getDefense();
                 System.out.println(this.name + " vs red"+"我的血量"+this.getHitPoints() + "对手血量"+obOther.getHitPoints());
             }else if (obOther instanceof Green){
-                obOther.nHitPoints -= this.getAttack() - obOther.getDefense();
+                this.nHitPoints -= obOther.getAttack() - this.getDefense();
                 System.out.println(this.name + " vs Green");
             }else if (obOther instanceof White)
             {
-                obOther.nHitPoints -= (int)(this.getAttack() * 0.9) - obOther.getDefense();
+                this.nHitPoints -= (int)(obOther.getAttack() * 0.9) - this.getDefense();
                 System.out.println(this.name + " vs White");
             }else{
-                obOther.nHitPoints -= this.getAttack() - obOther.getDefense();
+                this.nHitPoints -= obOther.getAttack() - this.getDefense();
                 System.out.println(this.name + " vs Black");
             }
         }
@@ -46,6 +44,6 @@ public class Green extends Dragon
     {
         return "Green{" +
                 "name='" + name + '\'' +
-                "} " + super.toString();
+                "} " /*+ super.toString()*/;
     }
 }
