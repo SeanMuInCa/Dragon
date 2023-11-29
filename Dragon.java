@@ -18,7 +18,6 @@ public abstract class Dragon
     protected int nHitPoints;
     protected int nInitiative;
     public  DragonSize nSize;
-//    private int originalHitPoints;
 
     public enum DragonSize
     {
@@ -54,7 +53,6 @@ public abstract class Dragon
                 this.nDefenseRank = getRandomNumber(10, 19);
             }
         }
-//        originalHitPoints = this.nHitPoints;
     }
 
     private static int getRandomNumber(int min, int max)
