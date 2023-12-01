@@ -53,8 +53,9 @@ public class GameTest
         }
 //put the elements into a new arraylist based on the order of the index array
         ArrayList<Dragon> result = new ArrayList<>();
-        for (int i = 0; i < indexes.length; i++) {
-            result.add(list.get(indexes[i]));
+        for (int index : indexes)
+        {
+            result.add(list.get(index));
         }
 //        System.out.println(list);
         System.out.println(result);
@@ -105,7 +106,7 @@ public class GameTest
                     if (attack(obDragon1, obDragon2, times1, times2)) break;
                 } else
                 {
-                    if (attack(obDragon1, obDragon2, times1, times2)) break;
+                    if (attack(obDragon2, obDragon1, times1, times2)) break;
                 }
             }
         }
