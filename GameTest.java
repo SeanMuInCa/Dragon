@@ -1,7 +1,6 @@
 package game;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * Purpose:             game<br />
@@ -35,8 +34,8 @@ public class GameTest
             }
             list.add(1, list.remove(list.size() - 1));//move the last one into 2nd
         }
-        System.out.println(list);
-        System.out.println(Arrays.toString(arr));
+/*        System.out.println(list);
+        System.out.println(Arrays.toString(arr));*/
         //store the index
         int[] indexes = new int[arr.length];
         for (int i = 0; i < indexes.length; i++) {
@@ -57,7 +56,7 @@ public class GameTest
         for (int i = 0; i < indexes.length; i++) {
             result.add(list.get(indexes[i]));
         }
-        System.out.println(list);
+//        System.out.println(list);
         System.out.println(result);
     }
 
@@ -92,7 +91,7 @@ public class GameTest
             int times1 = obDragon1.getNumAttacksPerTurn();
             int times2 = obDragon2.getNumAttacksPerTurn();
             int random = Math.random() < 0.5 ? 1 : 2;
-            System.out.println(obDragon1 + " vs " + obDragon2);
+//            System.out.println(obDragon1 + " vs " + obDragon2);
             if (obDragon1.getInitiative() > obDragon2.getInitiative())
             {
                 if (attack(obDragon1, obDragon2, times1, times2)) break;
